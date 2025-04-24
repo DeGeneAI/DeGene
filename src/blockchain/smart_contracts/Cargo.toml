@@ -1,0 +1,23 @@
+[package]
+name = "genome-program"
+version = "0.1.0"
+description = "Genome Storage and Management Program on Solana"
+edition = "2021"
+license = "MIT"
+
+[lib]
+crate-type = ["cdylib", "lib"]
+name = "genome_program"
+
+[features]
+no-entrypoint = []
+no-idl = []
+no-log-ix-name = []
+cpi = ["no-entrypoint"]
+default = []
+
+[dependencies]
+anchor-lang = "0.28.0"
+anchor-spl = "0.28.0"
+solana-program = "1.17.0"
+thiserror = "1.0" 
