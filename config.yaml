@@ -1,0 +1,55 @@
+blockchain:
+  network: testnet
+  node_url: http://localhost:8545
+  private_key: your_private_key_here
+  contract_address: your_contract_address_here
+
+ipfs:
+  node_url: /ip4/127.0.0.1/tcp/5001
+  gateway: https://ipfs.io/ipfs/
+  redundancy: 3
+
+database:
+  url: mongodb://localhost:27017/
+  name: degene
+  max_connections: 100
+  timeout_ms: 5000
+
+api:
+  host: 0.0.0.0
+  port: 8000
+  debug: true
+  secret_key: your_secret_key_here
+  cors_origins:
+    - http://localhost:3000
+    - https://app.degene.io
+
+security:
+  jwt_secret_key: your_jwt_secret_key_here
+  jwt_algorithm: HS256
+  access_token_expire_minutes: 30
+  password_min_length: 8
+  require_special_chars: true
+
+storage:
+  max_upload_size_mb: 100
+  compression_chunk_size: 1048576
+  cache_ttl: 3600
+  compression_level: 9
+  encryption_algorithm: AES-256-GCM
+
+monitoring:
+  sentry_dsn: your_sentry_dsn_here
+  log_level: INFO
+  metrics_enabled: true
+  trace_enabled: true
+
+genomics:
+  supported_formats:
+    - FASTA
+    - FASTQ
+    - BAM
+    - VCF
+  max_sequence_length: 1000000000
+  quality_threshold: 30
+  pattern_min_length: 8 
