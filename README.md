@@ -28,6 +28,26 @@ DeGene is a decentralized platform for secure genome data storage and analysis, 
   - Data sharing capabilities
   - Permission management
 
+### Genome Analysis Features
+- **Sequence Analysis**
+  - GC content calculation
+  - Sequence length analysis
+  - N-content analysis
+  - Quality score assessment
+  - Sequence similarity comparison
+
+- **Visualization Tools**
+  - GC content distribution plots
+  - Sequence length distribution plots
+  - Quality score distribution plots
+  - Sequence alignment visualization
+
+- **Batch Processing**
+  - Asynchronous batch processing
+  - Multi-threading support
+  - Automatic batch splitting
+  - Result visualization generation
+
 ## Comprehensive User Guide
 
 ### 1. System Requirements
@@ -258,6 +278,37 @@ solana cluster-version
 - Regular transaction monitoring
 - Multiple signature support
 - Network security monitoring
+
+### 8. Genome Analysis Features
+
+#### 8.1 Sequence Analysis
+```python
+from src.analysis.genome_analyzer import GenomeAnalyzer
+
+analyzer = GenomeAnalyzer()
+result = analyzer.analyze_sequence("ATCG...")
+print(f"GC Content: {result['gc_content']}")
+print(f"Length: {result['length']}")
+print(f"Quality Score: {result['quality_score']}")
+```
+
+#### 8.2 Visualization
+```python
+from src.visualization.genome_visualizer import GenomeVisualizer
+
+visualizer = GenomeVisualizer()
+gc_plot = visualizer.plot_gc_content(0.45)
+# Save or display the plot
+```
+
+#### 8.3 Batch Processing
+```python
+from src.processing.batch_processor import BatchProcessor
+
+processor = BatchProcessor(max_workers=4)
+results = await processor.process_batch(sequences)
+visualizations = await processor.generate_visualizations(results)
+```
 
 ## API Endpoints
 
