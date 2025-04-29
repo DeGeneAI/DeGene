@@ -1,0 +1,89 @@
+import matplotlib.pyplot as plt
+import seaborn as sns
+from typing import Dict, List, Optional
+import numpy as np
+import logging
+from io import BytesIO
+
+class GenomeVisualizer:
+    def __init__(self):
+        self.logger = logging.getLogger(__name__)
+        plt.style.use('seaborn')
+        
+    def plot_gc_content(self, gc_content: float, title: str = "GC Content Distribution") -> BytesIO:
+        """Plot GC content distribution"""
+        try:
+            fig, ax = plt.subplots(figsize=(8, 6))
+            ax.bar(['GC Content'], [gc_content], color='skyblue')
+            ax.set_ylim(0, 1)
+            ax.set_title(title)
+            ax.set_ylabel('Percentage')
+            
+            buffer = BytesIO()
+            plt.savefig(buffer, format='png')
+            buffer.seek(0)
+            plt.close()
+            return buffer
+        except Exception as e:
+            self.logger.error(f"GC content plotting error: {str(e)}")
+            raise
+            
+    def plot_sequence_length(self, lengths: List[int], title: str = "Sequence Length Distribution") -> BytesIO:
+        """Plot sequence length distribution"""
+        try:
+            fig, ax = plt.subplots(figsize=(10, 6))
+            sns.histplot(lengths, kde=True, ax=ax)
+            ax.set_title(title)
+            ax.set_xlabel('Length')
+            ax.set_ylabel('Count')
+            
+            buffer = BytesIO()
+            plt.savefig(buffer, format='png')
+            buffer.seek(0)
+            plt.close()
+            return buffer
+        except Exception as e:
+            self.logger.error(f"Sequence length plotting error: {str(e)}")
+            raise
+            
+    def plot_quality_scores(self, scores: List[float], title: str = "Quality Score Distribution") -> BytesIO:
+        """Plot quality score distribution"""
+        try:
+            fig, ax = plt.subplots(figsize=(10, 6))
+            sns.boxplot(y=scores, ax=ax)
+            ax.set_title(title)
+            ax.set_ylabel('Quality Score')
+            
+            buffer = BytesIO()
+            plt.savefig(buffer, format='png')
+            buffer.seek(0)
+            plt.close()
+            return buffer
+        except Exception as e:
+            self.logger.error(f"Quality score plotting error: {str(e)}")
+            raise
+            
+    def plot_sequence_comparison(self, alignment: Dict, title: str = "Sequence Alignment") -> BytesIO:
+        """Plot sequence alignment visualization"""
+        try:
+            if not alignment.get('alignment'):
+                raise ValueError("No alignment data provided")
+                
+            seq1, seq2 = alignment['alignment']
+            similarity = alignment['similarity']
+            
+            fig, ax = plt.subplots(figsize=(12, 4))
+            ax.text(0.5, 0.7, f"Similarity: {similarity:.2%}", ha='center', fontsize=12)
+            ax.text(0.5, 0.5, seq1, ha='center', fontfamily='monospace')
+            ax.text(0.5, 0.3, seq2, ha='center', fontfamily='monospace')
+            ax.axis('off')
+            ax.set_title(title)
+            
+            buffer = BytesIO()
+            plt.savefig(buffer, format='png')
+            buffer.seek(0)
+            plt.close()
+            return buffer
+        except Exception as e:
+            self.logger.error(f"Sequence alignment plotting error: {str(e)}")
+            raise 
