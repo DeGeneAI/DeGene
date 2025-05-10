@@ -4,7 +4,7 @@
 
 DeGene is a decentralized platform for secure genome data storage and analysis, built on the Solana blockchain. The platform combines the power of blockchain technology, IPFS distributed storage, and advanced genomic analysis capabilities.
 
-CA： 0x7ee619fdcc72c03a757318bd2902bc109ce24444
+CA： 0xff03be16249df03bb105cac372934fe017e44444
 ## Features
 
 ### Core Features
